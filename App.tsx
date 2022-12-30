@@ -1,9 +1,10 @@
-import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { Text } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './theme/theme';
 import AppScreen from './route/appScreen';
+import { theme } from './theme/theme';
 
 const navigationTheme = {
     ...DefaultTheme,
