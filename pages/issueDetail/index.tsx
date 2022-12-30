@@ -9,14 +9,13 @@ const DefaultText = styled.Text`
 font-size: ${({ theme }) =>  theme.typography.size.m1}px;
 `;
 
-
-const Main = () => {
+const IssueDetail = () => {
 
     return (
         <Layout>
-            <DefaultText>메인 페이지</DefaultText>
+            <DefaultText>이슈 디테일 페이지</DefaultText>
         </Layout>
     );
 };
 
-export default Main;
+export default IssueDetail;

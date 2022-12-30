@@ -6,7 +6,7 @@ const Stack = createNativeStackNavigator<AppStackParamList>();
 
 const AppStack = () => {
     return (
-        <Stack.Navigator initialRouteName='Main'>
+        <Stack.Navigator initialRouteName='IssueList'>
             { Object.entries({ ...AppStackDef }).map(([ name, { initialParams, component }]) => (
                 <Stack.Screen
                     key={name}

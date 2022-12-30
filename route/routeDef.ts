@@ -1,10 +1,15 @@
-import Main from '../pages/main';
+import IssueDetail from '../pages/issueDetail';
+import IssueList from '../pages/issueList';
 
-const MainScreens = {
-    Main: {
+const IssueScreens = {
+    IssueList: {
         initialParams: {},
-        component: Main,
+        component: IssueList,
     },
+    IssueDetail: {
+        initialParams: {},
+        component: IssueDetail,
+    }
 };
 
 type defaultParam = {
@@ -13,14 +18,18 @@ type defaultParam = {
 
 export type AppStackParamList = {
     Main: defaultParam,
+
+    IssueList: defaultParam,
+    IssueDetail: defaultParam,
 };
 
 export const AppStackDef = {
-    ...MainScreens,
+    ...IssueScreens,
 };
 
 const AppStackPageList = {
-    Main: 'Main',
+    IssueList: 'IssueList',
+    IssueDetail: 'IssueDetail',
 } as const;
 type ObjectLiteral<T extends { [i: string]: any }> = T[keyof T];
 export type AppStackType = ObjectLiteral<typeof AppStackPageList>;
