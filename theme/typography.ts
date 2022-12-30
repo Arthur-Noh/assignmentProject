@@ -1,4 +1,4 @@
-import { fontScaler } from "../helper/scaler";
+import { fontScaler } from '../helper/scaler';
 
 export interface ITypography {
     weight: {
@@ -8,12 +8,6 @@ export interface ITypography {
         bold: string,
     };
     size: {
-        xxs1: number,
-        xxs2: number,
-        xxs3: number,
-        xs1: number,
-        xs2: number,
-        xs3: number,
         s1: number,
         s2: number,
         s3: number,
@@ -23,9 +17,6 @@ export interface ITypography {
         l1: number,
         l2: number,
         l3: number,
-        xl1: number,
-        xl2: number,
-        xl3: number,
     };
 }
 
@@ -37,23 +28,14 @@ export const typography: ITypography = {
         bold: '700',
     },
     size: {
-        xxs1: fontScaler(8),
-        xxs2: fontScaler(9),
-        xxs3: fontScaler(10),
-        xs1: fontScaler(11),
-        xs2: fontScaler(12),
-        xs3: fontScaler(13),
-        s1: fontScaler(14),
-        s2: fontScaler(15),
-        s3: fontScaler(16),
-        m1: fontScaler(17),
-        m2: fontScaler(18),
-        m3: fontScaler(19),
-        l1: fontScaler(20),
-        l2: fontScaler(21),
-        l3: fontScaler(22),
-        xl1: fontScaler(23),
-        xl2: fontScaler(24),
-        xl3: fontScaler(25),
+        s1: fontScaler(12),
+        s2: fontScaler(13),
+        s3: fontScaler(14),
+        m1: fontScaler(15),
+        m2: fontScaler(16),
+        m3: fontScaler(17),
+        l1: fontScaler(18),
+        l2: fontScaler(19),
+        l3: fontScaler(20),
     },
 };

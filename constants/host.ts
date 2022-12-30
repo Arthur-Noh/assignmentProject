@@ -1,1 +1,0 @@
-export const HOST = 'https://api.github.com/repos/angular/angular-cli/';
