@@ -48,7 +48,7 @@ font-size: ${({ theme }) => theme.typography.size.s1}px;
 
 interface IIssueCard {
     title: string;
-    name: string;
+    name?: string;
     issueNumber: number;
     createDate: string;
     comments: number;
@@ -61,7 +61,7 @@ const IssueCard: React.FC<IIssueCard> = React.memo((props) => {
         <Layout>
             <InnerLayout>
                 { props.avatar && (
-                    <UserProfile source={{ uri: props.avatar}} />
+                    <UserProfile source={{ uri: props.avatar }} />
                 )}
                 <Card>
                     <CardLayout onPress={props.onPress}> 

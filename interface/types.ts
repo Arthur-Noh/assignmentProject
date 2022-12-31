@@ -8,7 +8,7 @@ export type UserDTO = {
 export type IssueDTO = {
     number: number,
     title: string,
-    user: UserDTO,
+    user?: UserDTO,
     created_at: string,
     comments: number,
     body: string,

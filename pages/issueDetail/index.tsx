@@ -56,11 +56,11 @@ const IssueDetail = () => {
             <Header>
                 <IssueCard
                     title={issueContext.detailIssue.title}
-                    name={issueContext.detailIssue.user.login}
+                    name={issueContext.detailIssue.user?.login}
                     issueNumber={issueContext.detailIssue.number}
                     createDate={issueContext.detailIssue.created_at}
                     comments={issueContext.detailIssue.comments}
-                    avatar={issueContext.detailIssue.user.avatar_url}
+                    avatar={issueContext.detailIssue.user?.avatar_url}
                 />
             </Header>
             <InnerLayout>

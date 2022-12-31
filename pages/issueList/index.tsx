@@ -1,10 +1,11 @@
 import { Link, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Linking, Pressable } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import IssueCard from '../../components/atoms/issueCard';
+import PagingButton from '../../components/atoms/pagingButton';
 import { scaler } from '../../helper/scaler';
 import useCustomHeader from '../../hooks/useCustomHeader';
 import { IssueDTO } from '../../interface/types';
@@ -33,6 +34,8 @@ const IssueList = () => {
     const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList, 'IssueList'>>();
     const issueContext = useContext(IssueContext)!;
 
+    const [ currentPage, setCurrentPage ] = useState<number>(1);
+
     const initialize = async (page: number, perPage: number) => {
         try {
             const response = await repositoryService.getIssueList(page, perPage);
@@ -44,7 +47,7 @@ const IssueList = () => {
         }
     }
 
-    const renderIssueCard = (data: IssueCardType) => {
+    const renderIssueCard = useCallback((data: IssueCardType) => {
         const { item, index } = data;
 
         return (
@@ -52,7 +55,7 @@ const IssueList = () => {
             <IssueCard
                 key={`card${index}`}
                 title={item.title}
-                name={item.user.login}
+                name={item.user?.login}
                 issueNumber={item.number}
                 createDate={item.created_at}
                 comments={item.comments}
@@ -70,7 +73,7 @@ const IssueList = () => {
             )}
             </>
         );
-    }
+    }, [ currentPage ]);
 
     useCustomHeader({ title: 'Angular/Angular-cli' });
 
@@ -85,6 +88,17 @@ const IssueList = () => {
                 renderItem={renderIssueCard}
                 keyExtractor={(item) => `${item.number}-${item.title}`}
                 contentContainerStyle={{ backgroundColor: 'white' }}
+            />
+            <PagingButton
+                currentPage={currentPage}
+                onPressLeft={async () => {
+                    setCurrentPage((prev) => prev - 1);
+                    await initialize(currentPage - 1, DEFAULT_PER_PAGE);
+                }}
+                onPressRight={async () => {
+                    setCurrentPage(prev => prev + 1);
+                    await initialize(currentPage + 1, DEFAULT_PER_PAGE);
+                }}
             />
         </Layout>
     );
