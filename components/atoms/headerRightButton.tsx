@@ -14,7 +14,7 @@ margin-left: ${({ isFirst }) => isFirst ? 0 : 8}px;
 `;
 
 const ButtonText = styled.Text<{ disabled?: boolean }>`
-font-size: ${({ theme }) => theme.typography.size.s2}px;
+font-size: ${({ theme }) => theme.typography.size.m2}px;
 font-weight: ${({ theme }) => theme.typography.weight.medium};
 color: ${({ theme, disabled }) => disabled ? theme.colors.gray[300] : theme.colors.primary.blue};
 `;

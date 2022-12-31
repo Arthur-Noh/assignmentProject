@@ -14,7 +14,7 @@ height: 15px;
 `;
 
 const ButtonText = styled.Text`
-font-size: ${({ theme }) => theme.typography.size.s2}px;
+font-size: ${({ theme }) => theme.typography.size.m2}px;
 font-weight: ${({ theme }) => theme.typography.weight.medium};
 color: ${({ theme }) => theme.colors.black.base};
 margin-left: 8px;
