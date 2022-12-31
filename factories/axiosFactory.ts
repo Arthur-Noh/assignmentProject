@@ -10,7 +10,7 @@ const createInstance = () => {
     instance.interceptors.request.use(
         async (config) => {
             config.headers = {
-                Authorization: `Bearer ${ACCESS_TOKEN}`,
+                // Authorization: `Bearer ${ACCESS_TOKEN}`,
                 'Content-Type' : 'application/json',
             };
 
