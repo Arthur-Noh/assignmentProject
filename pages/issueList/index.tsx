@@ -1,11 +1,12 @@
 import { Link, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { Linking, Pressable } from 'react-native';
+import { Alert, Linking, Pressable } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import IssueCard from '../../components/atoms/issueCard';
 import PagingButton from '../../components/atoms/pagingButton';
+import { generateDateString } from '../../helper/dateHelper';
 import { scaler } from '../../helper/scaler';
 import useCustomHeader from '../../hooks/useCustomHeader';
 import { IssueDTO } from '../../interface/types';
@@ -49,6 +50,7 @@ const IssueList = () => {
         } catch (error: any) {
             loaderContext.setLoading(false);
             console.error('IssueList initialize error =>', error);
+            Alert.alert('이슈 목록 가져오기에 실패하였습니다. 다시 시도해주세요.');
         }
     }
 
@@ -62,7 +64,7 @@ const IssueList = () => {
                 title={item.title}
                 name={item.user?.login}
                 issueNumber={item.number}
-                createDate={item.created_at}
+                createDate={generateDateString(item.created_at)}
                 comments={item.comments}
                 onPress={() => navigation.navigate('IssueDetail', { commentId: item.number })}
             />

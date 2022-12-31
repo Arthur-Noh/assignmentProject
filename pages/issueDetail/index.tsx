@@ -1,9 +1,11 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useContext, useEffect } from 'react';
+import { Alert } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import styled from 'styled-components/native';
 import IssueCard from '../../components/atoms/issueCard';
+import { generateDateString } from '../../helper/dateHelper';
 import useCustomHeader from '../../hooks/useCustomHeader';
 import { IssueContext } from '../../providers/issueProvider';
 import { LoaderContext } from '../../providers/loaderProvider';
@@ -48,6 +50,7 @@ const IssueDetail = () => {
         } catch (error: any) {
             loaderContext.setLoading(false);
             console.error('IssueDetail initialize error =>', error);
+            Alert.alert('이슈 상세정보 가져오기에 실패하였습니다. 다시 시도해주세요.');
         }
     }
 
@@ -64,13 +67,13 @@ const IssueDetail = () => {
                     title={issueContext.detailIssue.title}
                     name={issueContext.detailIssue.user?.login}
                     issueNumber={issueContext.detailIssue.number}
-                    createDate={issueContext.detailIssue.created_at}
+                    createDate={generateDateString(issueContext.detailIssue.created_at)}
                     comments={issueContext.detailIssue.comments}
                     avatar={issueContext.detailIssue.user?.avatar_url}
                 />
             </Header>
             <InnerLayout>
-                <Markdown>{issueContext.detailIssue.body}</Markdown>
+                <Markdown>{issueContext.detailIssue.body ?? ''}</Markdown>
             </InnerLayout>
         </Layout>
     );
