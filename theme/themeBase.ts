@@ -11,6 +11,7 @@ const colors = {
 
 const base = {
     templatePadding: scaler(15),
+    templateRadius: scaler(8),
 };
 
 export default {

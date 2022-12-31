@@ -12,6 +12,7 @@ declare module 'styled-components' {
         };
         base: {
             templatePadding: number,
+            templateRadius: number,
         };
         typography: ITypography;
     }
