@@ -3,6 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components';
+import { initAxiosInstance } from './factories/axiosFactory';
 import AppScreen from './route/appScreen';
 import { theme } from './theme/theme';
 
@@ -15,6 +16,8 @@ const navigationTheme = {
 };
 
 const App = () => {
+    initAxiosInstance();
+
     return (
         <SafeAreaProvider>
             <NavigationContainer theme={navigationTheme}>

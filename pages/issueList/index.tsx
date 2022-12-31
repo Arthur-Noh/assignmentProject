@@ -7,7 +7,7 @@ import styled from 'styled-components/native';
 import IssueCard from '../../components/atoms/issueCard';
 import { scaler } from '../../helper/scaler';
 import useCustomHeader from '../../hooks/useCustomHeader';
-import { IssueListDTO } from '../../interface/types';
+import { IssueDTO } from '../../interface/types';
 import { IssueContext } from '../../providers/issueProvider';
 import { AppStackParamList } from '../../route/routeDef';
 import repositoryService from '../../services/repositoryService';
@@ -25,7 +25,7 @@ margin: ${scaler(5)}px 0;
 `;
 
 type IssueCardType = {
-    item: IssueListDTO,
+    item: IssueDTO,
     index: number,
 };
 
@@ -35,12 +35,12 @@ const IssueList = () => {
 
     const initialize = async (page: number, perPage: number) => {
         try {
-            const response = await repositoryService.getIssues(page, perPage);
+            const response = await repositoryService.getIssueList(page, perPage);
             if (response) {
                 issueContext.setIssueList(response);
             }
-        } catch (error) {
-            console.log('IssueList initialize error =>', error);
+        } catch (error: any) {
+            console.error('IssueList initialize error =>', error);
         }
     }
 
@@ -56,7 +56,7 @@ const IssueList = () => {
                 issueNumber={item.number}
                 createDate={item.created_at}
                 comments={item.comments}
-                onPress={() => navigation.navigate('IssueDetail')}
+                onPress={() => navigation.navigate('IssueDetail', { commentId: item.number })}
             />
             { index === 4 && (
                 <Pressable

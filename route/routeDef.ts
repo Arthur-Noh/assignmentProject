@@ -16,11 +16,13 @@ type defaultParam = {
     defaultValue?: string,
 } | undefined;
 
-export type AppStackParamList = {
-    Main: defaultParam,
+type IssueDetailParam = {
+    commentId: number;
+};
 
+export type AppStackParamList = {
     IssueList: defaultParam,
-    IssueDetail: defaultParam,
+    IssueDetail: IssueDetailParam,
 };
 
 export const AppStackDef = {
