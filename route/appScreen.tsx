@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
+import IssueProvider from '../providers/issueProvider';
 import AppStack from './appStack';
 
 interface IAppScreen {
@@ -9,7 +10,9 @@ interface IAppScreen {
 const AppScreen: React.FC<IAppScreen> = (props) => {
     return (
         <SafeAreaView style={{ flex : 1 }}>
-            <AppStack />
+            <IssueProvider>
+                <AppStack />
+            </IssueProvider>
         </SafeAreaView>
     );
 };

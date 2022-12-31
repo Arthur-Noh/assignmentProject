@@ -1,0 +1,7 @@
+const DEFAULT_PAGE = 1;
+const DEFAULT_PER_PAGE = 10;
+
+export {
+    DEFAULT_PAGE,
+    DEFAULT_PER_PAGE,
+};
