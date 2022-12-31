@@ -1,6 +1,7 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useContext, useEffect } from 'react';
+import Markdown from 'react-native-markdown-display';
 import styled from 'styled-components/native';
 import IssueCard from '../../components/atoms/issueCard';
 import useCustomHeader from '../../hooks/useCustomHeader';
@@ -69,7 +70,7 @@ const IssueDetail = () => {
                 />
             </Header>
             <InnerLayout>
-                <ContentText>{issueContext.detailIssue.body}</ContentText>
+                <Markdown>{issueContext.detailIssue.body}</Markdown>
             </InnerLayout>
         </Layout>
     );
