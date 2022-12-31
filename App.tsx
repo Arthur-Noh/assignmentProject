@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components';
 import { initAxiosInstance } from './factories/axiosFactory';
+import LoaderProvider from './providers/loaderProvider';
 import AppScreen from './route/appScreen';
 import { theme } from './theme/theme';
 
@@ -22,7 +23,9 @@ const App = () => {
         <SafeAreaProvider>
             <NavigationContainer theme={navigationTheme}>
                 <ThemeProvider theme={theme}>
-                    <AppScreen />
+                    <LoaderProvider>
+                        <AppScreen />
+                    </LoaderProvider>
                 </ThemeProvider>
             </NavigationContainer>
         </SafeAreaProvider>

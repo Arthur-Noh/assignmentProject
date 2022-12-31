@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import IssueCard from '../../components/atoms/issueCard';
 import useCustomHeader from '../../hooks/useCustomHeader';
 import { IssueContext } from '../../providers/issueProvider';
+import { LoaderContext } from '../../providers/loaderProvider';
 import { AppStackParamList } from '../../route/routeDef';
 import repositoryService from '../../services/repositoryService';
 
@@ -32,15 +33,19 @@ const IssueDetail = () => {
     const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList, 'IssueDetail'>>();
     const router = useRoute<RouteProp<AppStackParamList, 'IssueDetail'>>();
     const issueContext = useContext(IssueContext)!;
+    const loaderContext = useContext(LoaderContext)!;
 
     const initialize = async (commentId: number) => {
         try {
+            loaderContext.setLoading(true);
             const response = await repositoryService.getDetailIssue(commentId);
             if (response) {
                 // console.log('response =>', response);
                 issueContext.setDetailIssue(response);
             }
+            loaderContext.setLoading(false);
         } catch (error: any) {
+            loaderContext.setLoading(false);
             console.error('IssueDetail initialize error =>', error);
         }
     }

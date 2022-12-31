@@ -10,6 +10,7 @@ import { scaler } from '../../helper/scaler';
 import useCustomHeader from '../../hooks/useCustomHeader';
 import { IssueDTO } from '../../interface/types';
 import { IssueContext } from '../../providers/issueProvider';
+import { LoaderContext } from '../../providers/loaderProvider';
 import { AppStackParamList } from '../../route/routeDef';
 import repositoryService from '../../services/repositoryService';
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from './constant';
@@ -33,16 +34,20 @@ type IssueCardType = {
 const IssueList = () => {
     const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList, 'IssueList'>>();
     const issueContext = useContext(IssueContext)!;
+    const loaderContext = useContext(LoaderContext)!;
 
     const [ currentPage, setCurrentPage ] = useState<number>(1);
 
     const initialize = async (page: number, perPage: number) => {
         try {
+            loaderContext.setLoading(true);
             const response = await repositoryService.getIssueList(page, perPage);
             if (response) {
                 issueContext.setIssueList(response);
             }
+            loaderContext.setLoading(false);
         } catch (error: any) {
+            loaderContext.setLoading(false);
             console.error('IssueList initialize error =>', error);
         }
     }
