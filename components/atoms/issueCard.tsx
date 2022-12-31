@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const Card = styled.View`
-border-bottom: 1px solid ${({ theme }) => theme.colors.black[100]};
+border-bottom-width: 1px;
+border-bottom-color: ${({ theme }) => theme.colors.black[100]};
 `;
 
 const CardLayout = styled.Pressable`
@@ -18,6 +19,7 @@ flex: 4;
 
 const CardRightView = styled.View`
 flex: 1;
+align-items: flex-end;
 `;
 
 const CardTitle = styled.Text`
