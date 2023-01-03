@@ -1,10 +1,8 @@
-import { ACCESS_TOKEN } from './../constants/host';
 import axios from 'axios';
-import { HOST } from '../constants/host';
 
 const createInstance = () => {
     const instance = axios.create({
-        baseURL: HOST,
+        baseURL: 'https://github.com/angular/angular-cli',
     });
 
     instance.interceptors.request.use(
@@ -36,7 +34,7 @@ const createInstance = () => {
 let Instance = createInstance();
 
 const initAxiosInstance = () => {
-    console.log(`[AxiosFactory] init, host: ${HOST}`);
+    console.log(`[AxiosFactory] init, host: https://github.com/angular/angular-cli`);
     Instance = createInstance();
 };
 
