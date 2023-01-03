@@ -64,4 +64,3 @@ buck-out/
 /vendor/bundle/
 
 yarn.lock
-constants/host.ts

@@ -2,13 +2,12 @@ import axios from 'axios';
 
 const createInstance = () => {
     const instance = axios.create({
-        baseURL: 'https://github.com/angular/angular-cli',
+        baseURL: 'https://api.github.com/repos/angular/angular-cli/',
     });
 
     instance.interceptors.request.use(
         async (config) => {
             config.headers = {
-                // Authorization: `Bearer ${ACCESS_TOKEN}`,
                 'Content-Type' : 'application/json',
             };
 
@@ -34,7 +33,7 @@ const createInstance = () => {
 let Instance = createInstance();
 
 const initAxiosInstance = () => {
-    console.log(`[AxiosFactory] init, host: https://github.com/angular/angular-cli`);
+    console.log(`[AxiosFactory] init, host: https://api.github.com/repos/angular/angular-cli/`);
     Instance = createInstance();
 };
 
